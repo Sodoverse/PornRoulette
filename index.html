@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#11110f" />
     <meta
       name="description"
-      content="A simple 18+ roulette button that opens a random video on Pornhub."
+      content="A simple 18+ roulette button that randomly picks Pornhub, XVideos, or nhentai."
     />
     <title>Random Video Roulette</title>
     <style>
@@ -145,28 +145,40 @@
     <main>
       <div class="mark" aria-hidden="true">↻</div>
       <p class="eyebrow">Video roulette</p>
-      <h1>Let chance<br />pick your next video.</h1>
+      <h1>Let chance<br />pick your next site.</h1>
       <p class="intro">
-        One click opens a random video on Pornhub in a new tab. No accounts,
-        embeds, or recommendations here—just a shortcut to the site's random
-        video page.
+        One click randomly picks Pornhub, XVideos, or nhentai and opens it in a
+        new tab. No accounts or embeds—just a quick spin across adult sites.
       </p>
       <a
         class="roulette"
+        id="roulette-link"
         href="https://www.pornhub.com/random"
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="I am 18 or older. Open a random Pornhub video in a new tab."
+        aria-label="I am 18 or older. Open a randomly selected adult site in a new tab."
       >
-        <span>I’m 18+ — pick a video</span>
+        <span>I’m 18+ — spin the roulette</span>
         <span class="arrow" aria-hidden="true">↗</span>
       </a>
       <p class="notice">
         Adults only (18+). By continuing, you confirm you’re of legal age to
-        view adult content where you live. Videos are hosted and selected by
-        Pornhub; this page does not control their content.
+        view adult content where you live. Destinations and content are hosted
+        by the selected sites; this page does not control them.
       </p>
-      <footer>External site · Opens in a new tab</footer>
+      <footer>Pornhub · XVideos · nhentai · Opens in a new tab</footer>
     </main>
+    <script>
+      const destinations = [
+        "https://www.pornhub.com/random",
+        "https://www.xvideos.com/",
+        "https://nhentai.net/random/",
+      ];
+
+      document.getElementById("roulette-link").addEventListener("click", (event) => {
+        const destination = destinations[Math.floor(Math.random() * destinations.length)];
+        event.currentTarget.href = destination;
+      });
+    </script>
   </body>
 </html>
